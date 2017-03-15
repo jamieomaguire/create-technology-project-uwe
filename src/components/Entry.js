@@ -42,7 +42,7 @@ class Entry extends Component {
     })
   }
   deleteEntry(e) {
-    e.preventDefault;
+    e.preventDefault();
     let id = this.props.uniqueID;
     this.props.onEntryDelete(id);
     console.log('oops deleted');
