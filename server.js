@@ -1,17 +1,17 @@
 'use strict'
 
 // Import dependencies
-var express = require('express');
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-var Entry = require('./model/entries');
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const Entry = require('./model/entries');
 
 // Create instances of the dependencies
-var app = express();
-var router = express.Router();
+const app = express();
+const router = express.Router();
 
 // Set the port to 3001
-var port = 3001;
+const port = 3001;
 
 // Database configuration
 mongoose.connect('mongodb://<DBUSERNAME>:<DBPASSWORD>@ds025439.mlab.com:25439/nom-noms');
@@ -56,10 +56,11 @@ router.route('/entries')
     // body parser lets us use the req.body
     entry.time = req.body.time;
     entry.meal = req.body.meal;
-
+    entry.value = req.body.value;
+    console.log(req.body);
     entry.save(function(err) {
       if (err)
-      res.send(err);
+        res.send(err);
       res.json({ message: 'Entry succesfully added!' });
     });
   });
@@ -71,9 +72,10 @@ router.route('/entries/:entry_id')
     Entry.findById(req.params.entry_id, function(err, entry) {
       if (err)
         res.send(err);
-      // setting the new time and meal to whatever was changed. if nothing changed, don't alter the field
+      // setting the new time, meal and value to whatever was changed. if nothing changed, don't alter the field
       (req.body.time) ? entry.time = req.body.time : null;
       (req.body.meal) ? entry.meal = req.body.meal : null;
+      (req.body.value) ? entry.value = req.body.value : null;
       // save entry
       entry.save(function(err) {
         if (err)

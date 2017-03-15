@@ -1,5 +1,6 @@
 // comment
 import React, { Component } from 'react';
+// import style from '../styles/style';
 
 class Entry extends Component {
   constructor(props) {
@@ -7,7 +8,8 @@ class Entry extends Component {
     this.state = {
       toBeUpdated: false,
       time: '',
-      meal: ''
+      meal: '',
+      value: ''
     };
     /**
      * ************************
@@ -20,6 +22,7 @@ class Entry extends Component {
      this.updateEntry = this.updateEntry.bind(this);
      this.handleTimeChange = this.handleTimeChange.bind(this);
      this.handleMealChange = this.handleMealChange.bind(this);
+     this.handleValueChange = this.handleValueChange.bind(this);
      this.handleEntryUpdate = this.handleEntryUpdate.bind(this);
   }
   updateEntry(e) {
@@ -33,12 +36,14 @@ class Entry extends Component {
     // if time or meal changed, set it. if not, leave it pull and PUT request will ignore it
     let time = (this.state.time) ? this.state.time : null;
     let meal = (this.state.meal) ? this.state.meal : null;
-    let entry = { time: time, meal: meal};
+    let value = (this.state.value) ? this.state.value : null;
+    let entry = { time: time, meal: meal, value: value };
     this.props.onEntryUpdate(id, entry);
     this.setState({
       toBeUpdated: !this.state.toBeUpdated,
       time: '',
-      meal: ''
+      meal: '',
+      value: ''
     })
   }
   deleteEntry(e) {
@@ -53,11 +58,20 @@ class Entry extends Component {
   handleTimeChange(e) {
     this.setState({ time: e.target.value });
   }
+  handleValueChange(e) {
+    let arr = [...document.getElementsByName('mealValue')];
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].checked === true) {
+        this.setState({ value: arr[i].value });
+      }
+    }
+  }
   render() {
     return (
       <div>
         <h3>{this.props.time}</h3>
         <span>{this.props.meal}</span>
+        <p>{this.props.value}</p>
         <a href="#" onClick={ this.updateEntry }>update</a>
         <a href="#" onClick={ this.deleteEntry }>delete</a>
         { (this.state.toBeUpdated) 
@@ -75,6 +89,35 @@ class Entry extends Component {
               <input 
                 type='submit'
                 value='Update' />
+              <div>
+                <label htmlFor="good"> Good
+                  <input
+                    type="radio"
+                    id="good"
+                    value="good"
+                    ref="goodRadio"
+                    name="mealValue"
+                    onChange={ this.handleValueChange } />
+                </label>
+                <label htmlFor="okay"> Okay
+                  <input
+                    type="radio"
+                    id="okay"
+                    value="okay"
+                    ref="okayRadio"
+                    name="mealValue"
+                    onChange={ this.handleValueChange } />
+                </label>
+                <label htmlFor="bad"> Bad
+                  <input
+                    type="radio"
+                    id="bad"
+                    value="bad"
+                    ref="badRadio"
+                    name="mealValue" 
+                    onChange={ this.handleValueChange }/>
+                </label>
+              </div>
             </form>)
             : null}
       </div>

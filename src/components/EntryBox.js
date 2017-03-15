@@ -27,7 +27,6 @@ class EntryBox extends Component {
       })
   }
   handleEntrySubmit(entry) {
-    // add POST request
     let entries = this.state.data;
     entry.id = Date.now();
     let newEntries = entries.concat([entry]);

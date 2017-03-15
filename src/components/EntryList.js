@@ -11,7 +11,8 @@ class EntryList extends Component {
           uniqueID={ entry['_id'] } 
           onEntryDelete={ this.props.onEntryDelete }
           onEntryUpdate={ this.props.onEntryUpdate }
-          meal={ entry.meal } 
+          meal={ entry.meal }
+          value={ entry.value } 
           key={ entry['_id'] } />
       )
     })
