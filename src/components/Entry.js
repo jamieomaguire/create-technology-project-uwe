@@ -1,6 +1,6 @@
 // comment
 import React, { Component } from 'react';
-// import style from '../styles/style';
+import styles from '../styles/Entry.css.js';
 
 class Entry extends Component {
   constructor(props) {
@@ -68,7 +68,7 @@ class Entry extends Component {
   }
   render() {
     return (
-      <div>
+      <div style={ styles }>
         <h3>{this.props.time}</h3>
         <span>{this.props.meal}</span>
         <p>{this.props.value}</p>

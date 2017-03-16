@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import EntryList from './EntryList';
 import EntryForm from './EntryForm';
+import DailyChart from './DailyChart';
 
 class EntryBox extends Component {
   constructor(props) {
@@ -64,12 +65,13 @@ class EntryBox extends Component {
   render() {
     return (
       <div>
+        <EntryForm onEntrySubmit={ this.handleEntrySubmit } />
         <h2>Entries:</h2>
+        <DailyChart data={ this.state.data } />
         <EntryList 
           onEntryDelete={ this.handleEntryDelete }
           onEntryUpdate={ this.handleEntryUpdate }
           data={ this.state.data } />
-        <EntryForm onEntrySubmit={ this.handleEntrySubmit } />
       </div>
     )
   }
