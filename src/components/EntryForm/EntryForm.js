@@ -1,6 +1,8 @@
 // comment form
 import React, { Component } from 'react';
 
+import Style from 'style-it';
+
 class EntryForm extends Component {
   constructor(props) {
     super(props);
@@ -55,14 +57,40 @@ class EntryForm extends Component {
   }
   render() {
     return (
-      <form onSubmit={ this.handleSubmit }>
+      <Style>
+        {`
+          .container {
+            border: 1px solid #ccc;
+            padding: 1em;
+            margin-bottom: 1.5em;
+            border-radius: .5em;
+            box-shadow: 0px 3px 8px rgba(0,0,0,.2);
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-betwee;
+          }
+          .textInput {
+            width: 100%;
+            padding: .5em;
+            height: 4em;
+            fontSize: .8em;
+            margin-bottom: 1em;
+            border: none;
+            border-bottom: 1px solid #ccc;
+          }
+        `}
+      <form onSubmit={ this.handleSubmit } className="container" >
         <input
+          className="textInput"
           type='text'
-          placeholder='What time did you eat?'
+          placeholder='When did you eat?'
           value={ this.state.time }
           ref="timeInput"
           onChange={ this.handleTimeChange } />
         <input
+          className="textInput"
           type='text'
           placeholder='What did you have?'
           value={ this.state.text }
@@ -101,6 +129,7 @@ class EntryForm extends Component {
           type='submit'
           value='Post' />
       </form>
+      </Style>
     )
   }
 }

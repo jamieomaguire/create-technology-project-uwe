@@ -125,13 +125,17 @@ class DailyChart extends Component {
       this.updateChart, 0
     );
   }
+
   render() {
+
+    defaults.global.legend.display = false;
+
     return (
       <div style={ style.container }>
         <Doughnut data={ this.state.chartData }/>
-        <h3>Good is: {this.state.good > 0 ? this.state.good : null}</h3>
+        {/*<h3>Good is: {this.state.good > 0 ? this.state.good : null}</h3>
         <h3>Okay is: {this.state.okay > 0 ? this.state.okay : null}</h3>
-        <h3>Bad is: {this.state.bad > 0 ? this.state.bad : null}</h3>
+        <h3>Bad is: {this.state.bad > 0 ? this.state.bad : null}</h3>*/}
       </div>
     )
   }

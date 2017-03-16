@@ -1,6 +1,6 @@
 const style = {
-  container: {
-    backgroundColor: "pink"
+  body: {
+    backgroundColor: '010101'
   }
 }
 
