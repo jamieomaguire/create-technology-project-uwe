@@ -1,8 +1,9 @@
 // comment
 import React, { Component } from 'react';
-import styles from '../styles/Entry.css.js';
 
-class Entry extends Component {
+import style from './style';
+
+export default class Entry extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -68,7 +69,7 @@ class Entry extends Component {
   }
   render() {
     return (
-      <div style={ styles }>
+      <div style={ style.container }>
         <h3>{this.props.time}</h3>
         <span>{this.props.meal}</span>
         <p>{this.props.value}</p>
@@ -124,5 +125,3 @@ class Entry extends Component {
     )
   }
 }
-
-export default Entry;

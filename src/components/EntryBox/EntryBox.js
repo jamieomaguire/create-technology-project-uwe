@@ -1,14 +1,16 @@
 // comment box
 import React, { Component } from 'react';
 import axios from 'axios';
-import EntryList from './EntryList';
-import EntryForm from './EntryForm';
-import DailyChart from './DailyChart';
+import EntryList from '../EntryList/EntryList';
+import EntryForm from '../EntryForm/EntryForm';
+import DailyChart from '../DailyChart/DailyChart';
 
 class EntryBox extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] };
+    this.state = { 
+      data: [],
+    };
     /**
      * ************************
      * Bind the functions to the context of EntryForm.
@@ -54,6 +56,7 @@ class EntryBox extends Component {
         console.log(err);
       });
   }
+
   /** 
    * upon loading, make an axios call to the url and fill the state with database Entries
    * then use the setInterval to look for new entries every 2 seconds 
@@ -65,9 +68,9 @@ class EntryBox extends Component {
   render() {
     return (
       <div>
+        <DailyChart data={ this.state.data } />
         <EntryForm onEntrySubmit={ this.handleEntrySubmit } />
         <h2>Entries:</h2>
-        <DailyChart data={ this.state.data } />
         <EntryList 
           onEntryDelete={ this.handleEntryDelete }
           onEntryUpdate={ this.handleEntryUpdate }

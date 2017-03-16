@@ -1,6 +1,7 @@
 // indexjs
 import React, { Component } from 'react';
-import EntryBox from './EntryBox';
+import EntryBox from '../EntryBox/EntryBox';
+
 
 class App extends Component {
   constructor(props) {
