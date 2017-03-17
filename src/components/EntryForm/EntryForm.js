@@ -69,16 +69,29 @@ class EntryForm extends Component {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-betwee;
+            justify-content: space-between;
           }
           .textInput {
             width: 100%;
             padding: .5em;
             height: 4em;
-            fontSize: .8em;
+            font-size: .8em;
             margin-bottom: 1em;
             border: none;
             border-bottom: 1px solid #ccc;
+          }
+          .radioLabel {
+            display: block;
+            margin-bottom: .5em;
+          }
+          .formSubmit {
+            background-color: #68D286;
+            color: #FFF;
+            border: none;
+            padding: .5em 1em;
+            font-size: .8em;
+            text-transform: uppercase;
+            align-self: flex-start;
           }
         `}
       <form onSubmit={ this.handleSubmit } className="container" >
@@ -97,7 +110,7 @@ class EntryForm extends Component {
           ref="mealInput"
           onChange={ this.handleMealChange } /> 
         <div>
-          <label htmlFor="good"> Good
+          <label htmlFor="good" className="radioLabel"> Good
             <input
               type="radio"
               id="good"
@@ -106,7 +119,7 @@ class EntryForm extends Component {
               name="mealValue"
               onChange={ this.handleValueChange } />
           </label>
-          <label htmlFor="okay"> Okay
+          <label htmlFor="okay" className="radioLabel"> Okay
             <input
               type="radio"
               id="okay"
@@ -115,7 +128,7 @@ class EntryForm extends Component {
               name="mealValue"
               onChange={ this.handleValueChange } />
           </label>
-          <label htmlFor="bad"> Bad
+          <label htmlFor="bad" className="radioLabel"> Bad
             <input
               type="radio"
               id="bad"
@@ -127,7 +140,8 @@ class EntryForm extends Component {
         </div>
         <input
           type='submit'
-          value='Post' />
+          className="formSubmit"
+          value='Add' />
       </form>
       </Style>
     )

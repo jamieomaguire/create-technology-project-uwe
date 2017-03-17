@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Doughnut, defaults } from 'react-chartjs-2';
 
-import style from './style';
+import Style from 'style-it';
 
 class DailyChart extends Component {
   constructor(props) {
@@ -131,12 +131,24 @@ class DailyChart extends Component {
     defaults.global.legend.display = false;
 
     return (
-      <div style={ style.container }>
-        <Doughnut data={ this.state.chartData }/>
-        {/*<h3>Good is: {this.state.good > 0 ? this.state.good : null}</h3>
-        <h3>Okay is: {this.state.okay > 0 ? this.state.okay : null}</h3>
-        <h3>Bad is: {this.state.bad > 0 ? this.state.bad : null}</h3>*/}
-      </div>
+      <Style>
+        {`
+          .chartContainer {
+            border: 1px solid #ccc;
+            padding: 1em;
+            margin-bottom: 1.5em;
+            border-radius: .5em;
+            box-shadow: 0px 3px 8px rgba(0,0,0,.2);
+            background-color: #ffffff;
+          }
+        `}
+        <div className="chartContainer">
+          <Doughnut data={ this.state.chartData } />
+          {/*<h3>Good is: {this.state.good > 0 ? this.state.good : null}</h3>
+          <h3>Okay is: {this.state.okay > 0 ? this.state.okay : null}</h3>
+          <h3>Bad is: {this.state.bad > 0 ? this.state.bad : null}</h3>*/}
+        </div>
+      </Style>
     )
   }
 }

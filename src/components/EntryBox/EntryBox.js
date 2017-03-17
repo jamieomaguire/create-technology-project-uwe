@@ -70,7 +70,6 @@ class EntryBox extends Component {
       <div>
         <DailyChart data={ this.state.data } />
         <EntryForm onEntrySubmit={ this.handleEntrySubmit } />
-        <h2>Entries:</h2>
         <EntryList 
           onEntryDelete={ this.handleEntryDelete }
           onEntryUpdate={ this.handleEntryUpdate }
