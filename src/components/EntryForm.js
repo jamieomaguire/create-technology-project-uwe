@@ -92,6 +92,7 @@ class EntryForm extends Component {
             font-size: .8em;
             text-transform: uppercase;
             align-self: flex-start;
+            cursor: pointer;
           }
         `}
       <form onSubmit={ this.handleSubmit } className="container" >

@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import EntryBox from './EntryBox';
 import Overview from './Overview';
+import Settings from './Settings';
 
 
 class App extends Component {
@@ -17,7 +18,10 @@ class App extends Component {
           url='http://localhost:3001/api/entries'
           pollInterval={2000} /> :
       (this.props.location.pathname === "/overview") ?
-        <Overview /> :  null }
+        <Overview /> :  
+      (this.props.location.pathname === "/settings") ?
+        <Settings /> : null
+        }
       </div>
     )
   }

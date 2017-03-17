@@ -20,5 +20,21 @@ html {
 }
 
 body {
-  background-color: #f1f1f1;
+  background-color: #E1E1E1;
 }
+/*body:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url("https://static.pexels.com/photos/39031/strawberry-red-macro-39031.jpeg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: repeat-x;
+  z-index: -1;
+  background-color: pink;
+}*/
