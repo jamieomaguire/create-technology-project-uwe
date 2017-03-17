@@ -1,9 +1,9 @@
 // comment box
 import React, { Component } from 'react';
 import axios from 'axios';
-import EntryList from '../EntryList/EntryList';
-import EntryForm from '../EntryForm/EntryForm';
-import DailyChart from '../DailyChart/DailyChart';
+import EntryList from './EntryList';
+import EntryForm from './EntryForm';
+import DailyChart from './DailyChart';
 
 class EntryBox extends Component {
   constructor(props) {
@@ -63,7 +63,17 @@ class EntryBox extends Component {
    */
   componentDidMount() {
     this.loadEntriesFromServer();
-    setInterval(this.loadEntriesFromServer, this.props.pollInterval);
+    let intervalId = setInterval(this.loadEntriesFromServer, this.props.pollInterval);
+    this.setState({
+      intervalId: intervalId
+    })
+  }
+  // interval needs to be cleared to prevent setting state in the unmounted component
+  componentWillUnmount() {
+    clearInterval(this.state.intervalId);
+    this.setState({
+      intervalId: 0
+    })
   }
   render() {
     return (

@@ -120,16 +120,24 @@ class DailyChart extends Component {
     })
   }
   // load entries into state
-  componentWillMount() {
-    setInterval(
+  componentDidMount() {
+    let intervalId = setInterval(
       this.updateChart, 0
     );
+    this.setState({
+      intervalId: intervalId,
+    })
+  }
+  // interval needs to be cleared to prevent setting state in the unmounted component
+  componentWillUnmount() {
+    clearInterval(this.state.intervalId);
+    this.setState({
+      intervalId: 0
+    })
   }
 
   render() {
-
     defaults.global.legend.display = false;
-
     return (
       <Style>
         {`
@@ -144,9 +152,6 @@ class DailyChart extends Component {
         `}
         <div className="chartContainer">
           <Doughnut data={ this.state.chartData } />
-          {/*<h3>Good is: {this.state.good > 0 ? this.state.good : null}</h3>
-          <h3>Okay is: {this.state.okay > 0 ? this.state.okay : null}</h3>
-          <h3>Bad is: {this.state.bad > 0 ? this.state.bad : null}</h3>*/}
         </div>
       </Style>
     )

@@ -1,6 +1,6 @@
 //commentlist
 import React, { Component } from 'react';
-import Entry from '../Entry/Entry';
+import Entry from './Entry';
 
 import Style from 'style-it';
 

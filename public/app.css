@@ -1,3 +1,16 @@
+/** 
+ *
+ * ****************
+ * Base Style Sheet
+ * ****************
+ * 
+ * This is reserved for generic page styles such as box-sizing.
+ * Only styles that are exclusive to the entire app are written here.
+ *
+ * Component specific css is written inside each React component using the Style-it library
+ *
+ */
+ 
 html {
   box-sizing: border-box;
 }
