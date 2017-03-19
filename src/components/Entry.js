@@ -208,30 +208,30 @@ export default class Entry extends Component {
                   className="updateMeal"
                   onChange={ this.handleMealChange }/>
                 <div className="updateValueGroup">
-                  <label htmlFor="good"> Good
+                  <label htmlFor="updateGood"> Good
                     <input
                       type="radio"
-                      id="good"
+                      id="updateGood"
                       value="good"
                       ref="goodRadio"
                       name="mealValue"
                       className="updateValue"
                       onChange={ this.handleValueChange } />
                   </label>
-                  <label htmlFor="okay"> Okay
+                  <label htmlFor="updateOkay"> Okay
                     <input
                       type="radio"
-                      id="okay"
+                      id="updateOkay"
                       value="okay"
                       ref="okayRadio"
                       name="mealValue"
                       className="updateValue"
                       onChange={ this.handleValueChange } />
                   </label>
-                  <label htmlFor="bad"> Bad
+                  <label htmlFor="updateBad"> Bad
                     <input
                       type="radio"
-                      id="bad"
+                      id="updateBad"
                       value="bad"
                       ref="badRadio"
                       name="mealValue" 

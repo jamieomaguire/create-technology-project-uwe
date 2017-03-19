@@ -5,7 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Entry = require('./model/entries');
-// const PastEntry = require('./model/past-entries');
+const PastEntry = require('./model/past-entries');
 
 // Create instances of the dependencies
 const app = express();
@@ -95,42 +95,41 @@ router.route('/entries/:entry_id')
   });
 
 // TEST API STUFF FOR PAST ENTRIES 
-
-// // adding the /past-entries route to the /api router
-// router.route('/past-entries')
-//   // retrieve all entries from the database 
-//   .get(function(req, res) {
-//     // looks at the PastEntry Schema
-//     PastEntry.find(function(err, entries) {
-//       if (err)
-//       res.send(err);
-//       // responds with a json object of database entries
-//       res.json(entries)
-//     });
-//   })
-//   // post new past entry to the database
-//   .post(function(req, res) {
-//     var pastEntry = new PastEntry();
-//     // body parser lets us use the req.body
-//     pastEntry.date = req.body.date;
-//     pastEntry.value = req.body.value;
-//     console.log(req.body);
-//     pastEntry.save(function(err) {
-//       if (err)
-//         res.send(err);
-//       res.json({ message: 'Entry succesfully added!' });
-//     });
-//   });
+// adding the /past-entries route to the /api router
+router.route('/past-entries')
+  // retrieve all entries from the database 
+  .get(function(req, res) {
+    // looks at the PastEntry Schema
+    PastEntry.find(function(err, entries) {
+      if (err)
+      res.send(err);
+      // responds with a json object of database entries
+      res.json(entries)
+    });
+  })
+  // post new past entry to the database
+  .post(function(req, res) {
+    var pastEntry = new PastEntry();
+    // body parser lets us use the req.body
+    pastEntry.date = req.body.date;
+    pastEntry.value = req.body.value;
+    console.log(req.body);
+    pastEntry.save(function(err) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'Entry succesfully added!' });
+    });
+  });
 
 // // Adding a route to a specific entry based in the database ID 
 // router.route('/past-entries/:entry_id')
 //   // the put method allows us to update our entry based on the ID passed to the route
 //   .put(function(req, res) {
-//     Entry.findById(req.params.entry_id, function(err, entry) {
+//     PastEntry.findById(req.params.entry_id, function(err, entry) {
 //       if (err)
 //         res.send(err);
-//       // setting the new time, meal and value to whatever was changed. if nothing changed, don't alter the field
-//       (req.body.date) ? entry.time = req.body.date : null;
+//       // setting the new date and value to whatever was changed. if nothing changed, don't alter the field
+//       (req.body.date) ? entry.date = req.body.date : null;
 //       (req.body.value) ? entry.value = req.body.value : null;
 //       // save entry
 //       entry.save(function(err) {
@@ -142,7 +141,7 @@ router.route('/entries/:entry_id')
 //   })
 //   .delete(function(req, res) {
 //     // selects the entry by its ID, then removes it 
-//     Entry.remove({ _id: req.params.entry_id }, function(err, entry) {
+//     PastEntry.remove({ _id: req.params.entry_id }, function(err, entry) {
 //       if (err)
 //         res.send(err);
 //       res.json({ message: 'Entry has been deleted!' })

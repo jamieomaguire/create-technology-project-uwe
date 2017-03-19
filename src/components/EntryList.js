@@ -47,7 +47,9 @@ class EntryList extends Component {
         `}
         <div className="container">
           { entryNodes }
-          <button className="completeDay">Complete Day</button>
+          <button 
+            className="completeDay"
+            onClick={ this.props.onCompleteDay }>Complete Day</button>
         </div>
       </Style>
     )

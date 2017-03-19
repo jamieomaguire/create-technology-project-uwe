@@ -82,6 +82,7 @@ class DailyChart extends Component {
   }
   // retreive the values, calculate the occurences and then update the chart with those values
   updateChart() {
+    // console.log('updating')
     this.retrieveMealValues();
     this.setState({
       chartData: {
@@ -119,21 +120,14 @@ class DailyChart extends Component {
       }
     })
   }
-  // load entries into state
   componentDidMount() {
-    let intervalId = setInterval(
-      this.updateChart, 0
-    );
-    this.setState({
-      intervalId: intervalId,
-    })
+    this.updateChart();
+    this.loadInterval = setInterval(this.updateChart, 0);
   }
   // interval needs to be cleared to prevent setting state in the unmounted component
   componentWillUnmount() {
-    clearInterval(this.state.intervalId);
-    this.setState({
-      intervalId: 0
-    })
+    this.loadInterval && clearInterval(this.loadInterval);
+    this.loadInterval = false;
   }
 
   render() {

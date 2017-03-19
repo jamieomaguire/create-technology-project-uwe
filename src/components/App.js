@@ -16,9 +16,12 @@ class App extends Component {
       {(this.props.location.pathname === "/") ?
         <EntryBox
           url='http://localhost:3001/api/entries'
+          url2='http://localhost:3001/api/past-entries'
           pollInterval={2000} /> :
       (this.props.location.pathname === "/overview") ?
-        <Overview /> :  
+        <Overview
+          url='http://localhost:3001/api/past-entries'
+          pollInterval={2000} /> :  
       (this.props.location.pathname === "/settings") ?
         <Settings /> : null
         }
