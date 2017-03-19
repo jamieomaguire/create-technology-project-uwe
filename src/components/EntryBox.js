@@ -36,6 +36,7 @@ class EntryBox extends Component {
     entry.id = Date.now();
     let newEntries = entries.concat([entry]);
     this.setState({ data: newEntries });
+        console.log(entry);
     axios.post(this.props.url, entry)
       .catch(err => {
         console.error(err);
@@ -90,20 +91,25 @@ class EntryBox extends Component {
       majorityValue = 'good';
     } else if (totalOkay > totalGood && totalOkay > totalBad) {
       majorityValue = 'okay';
-      console.log(totalGood, totalOkay, totalBad)
     } else if (totalBad > totalGood && totalBad > totalOkay) {
       majorityValue = 'bad';
-      console.log(totalGood, totalOkay, totalBad)
     } else {
       majorityValue = 'okay';
     }
 
-    console.log(majorityValue);
     return majorityValue;
   }
-  // TEST FOR COMPLETE DAY
   handlePastEntrySubmit() {
-    this.calculateTotalValue(this.state.data);
+    let pastEntryValue = this.calculateTotalValue(this.state.data);
+    let pastEntryDate = Date().toString();
+    let newPastEntry = {};
+    newPastEntry.date = pastEntryDate;
+    newPastEntry.value = pastEntryValue
+
+    axios.post(this.props.url2, newPastEntry)
+      .catch(err => {
+        console.error(err);
+      });   
 
       // axios.delete(`${this.props.url}/${el._id}`)
       // .then(res => {
@@ -112,9 +118,7 @@ class EntryBox extends Component {
       // .catch(err => {
       //   console.error(err);
       // });
-    this.loadEntriesFromServer();
   }
-  // END TEST FOR COMPLETE DAY
 
   /** 
    * upon loading, make an axios call to the url and fill the state with database Entries
@@ -122,7 +126,7 @@ class EntryBox extends Component {
    */
   componentDidMount() {
     this.loadEntriesFromServer();
-    this.loadInterval = setInterval(this.loadEntriesFromServer, 1000);
+    this.loadInterval = setInterval(this.loadEntriesFromServer, this.props.pollInterval);
   }
   // interval needs to be cleared to prevent setting state in the unmounted component
   componentWillUnmount() {

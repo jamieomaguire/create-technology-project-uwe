@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import PastEntryList from './PastEntryList';
+import Style from 'style-it';
+
 class Overview extends Component {
   constructor(props) {
     super(props);
@@ -18,21 +21,27 @@ class Overview extends Component {
   }
   componentDidMount() {
     this.loadPastEntriesFromServer();
-    let intervalId = setInterval(this.LoadPastEntriesFromServer, this.props.pollInterval);
-    this.setState({
-      intervalId: intervalId
-    })
-  }
-    // interval needs to be cleared to prevent setting state in the unmounted component
-  componentWillUnmount() {
-    clearInterval(this.state.intervalId);
-    this.setState({
-      intervalId: 0
-    })
   }
   render() {
     return (
-      <h1>HOLLA!</h1>
+      <Style>
+        {`
+          .overviewContainer {
+            border: 1px solid #ccc;
+            padding: 1em;
+            margin-bottom: 1.5em;
+            border-radius: .5em;
+            box-shadow: 0px 3px 8px rgba(0,0,0,.2);
+            background-color: #ffffff;
+          }
+        `}
+        <div>
+          <div className="overviewContainer">
+            <h1>Overview</h1>
+            <PastEntryList entries={ this.state.data }/>
+          </div>
+        </div>
+      </Style>
     )
   }
 }
