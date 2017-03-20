@@ -88,7 +88,7 @@ export default class Entry extends Component {
       <Style>
         {`
           .entryContainer {
-            position: relative;
+            border-bottom: 1px solid #fff;
             padding: 1em;
             display: flex;
             flex-direction: column;
@@ -103,7 +103,6 @@ export default class Entry extends Component {
             border-top-right-radius: .5em;
           }
           .entryContainer:last-of-type {
-            border: none;
             padding-bottom: 0;
           }
           .entryOptions {
@@ -197,8 +196,42 @@ export default class Entry extends Component {
           .updateValueGroup {
             margin-bottom: .5em;
           }
-          .updateValue {
-
+          .updateRadioLabel input[type="radio"] {
+            position: absolute;
+            visibility: hidden;
+          }
+          .updateRadioLabel {
+            display: block;
+            margin-bottom: .5em;
+            position: relative;
+            cursor: pointer;
+            font-family: sans-serif;
+          }
+          .updateRadioCheck {
+            position: absolute;
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            left: 3em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #fff;
+          }
+          .updateRadioLabel:hover .updateRadioCheck {
+            border: 2px solid #fff;
+          }
+          input[type=radio]:checked ~ .updateRadioCheck, .updateRadioCheck:hover {
+            border: 2px solid #fff;
+          }
+          .updateCheckSelect {
+            display: block;
+            border-radius: 50%;
+          }
+          input[type=radio]:checked ~ .updateRadioCheck .updateCheckSelect {
+            background-color: #fff;
+            height: 10px;
+            width: 10px;
           }
         `}
         <div className="entryContainer">
@@ -226,7 +259,7 @@ export default class Entry extends Component {
                   className="updateMeal"
                   onChange={ this.handleMealChange }/>
                 <div className="updateValueGroup">
-                  <label htmlFor="updateGood"> Good
+                  <label htmlFor="updateGood" className="updateRadioLabel">
                     <input
                       type="radio"
                       id="updateGood"
@@ -235,8 +268,10 @@ export default class Entry extends Component {
                       name="mealValue"
                       className="updateValue"
                       onChange={ this.handleValueChange } />
+                      <span className="updateRadioCheck"><span className="updateCheckSelect"></span></span>
+                      Good
                   </label>
-                  <label htmlFor="updateOkay"> Okay
+                  <label htmlFor="updateOkay" className="updateRadioLabel">
                     <input
                       type="radio"
                       id="updateOkay"
@@ -245,8 +280,10 @@ export default class Entry extends Component {
                       name="mealValue"
                       className="updateValue"
                       onChange={ this.handleValueChange } />
+                      <span className="updateRadioCheck"><span className="updateCheckSelect"></span></span>
+                      Okay
                   </label>
-                  <label htmlFor="updateBad"> Bad
+                  <label htmlFor="updateBad" className="updateRadioLabel">
                     <input
                       type="radio"
                       id="updateBad"
@@ -255,6 +292,8 @@ export default class Entry extends Component {
                       name="mealValue" 
                       className="updateValue"
                       onChange={ this.handleValueChange }/>
+                      <span className="updateRadioCheck"><span className="updateCheckSelect"></span></span>
+                      Bad
                   </label>
                 </div>
                 <button className="updateSubmit">Submit</button>

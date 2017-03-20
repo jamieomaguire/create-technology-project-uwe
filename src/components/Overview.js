@@ -28,16 +28,20 @@ class Overview extends Component {
         {`
           .overviewContainer {
             border: 1px solid #ccc;
-            padding: 1em;
-            margin-bottom: 1.5em;
             border-radius: .5em;
             box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
             background-color: #ffffff;
           }
+          .overviewHeading {
+            text-align: center;
+            font-family: sans-serif;
+            font-weight: 100;
+            color: #4a4a4a;
+          }
         `}
         <div>
           <div className="overviewContainer">
-            <h1>Overview</h1>
+            <h1 className="overviewHeading">Daily Averages</h1>
             <PastEntryList entries={ this.state.data }/>
           </div>
         </div>

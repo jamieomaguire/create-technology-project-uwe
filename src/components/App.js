@@ -41,7 +41,7 @@ class App extends Component {
             (this.props.location.pathname === "/settings") ?
               <Settings /> : null
               }
-            </div>
+          </div>
         </div>
       </Style>
     )

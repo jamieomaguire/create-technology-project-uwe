@@ -78,11 +78,25 @@ class EntryForm extends Component {
             font-size: .8em;
             margin-bottom: 1em;
             border: none;
+            border-radius: 0;
             border-bottom: 1px solid #ccc;
           }
+          .radioLabel:first-of-type {
+            margin-top: 1em;
+          }
           .radioLabel {
+            margin-left: 2em;
             display: block;
-            margin-bottom: .5em;
+            font-family: sans-serif;
+            color: #4a4a4a;
+            margin-bottom: 1em;
+            position: relative;
+            cursor: pointer;
+            -webkit-touch-callout: none;
+              -webkit-user-select: none;
+                 -moz-user-select: none;
+                  -ms-user-select: none;
+                      user-select: none;
           }
           .formSubmit {
             background-color: #68D286;
@@ -93,6 +107,37 @@ class EntryForm extends Component {
             text-transform: uppercase;
             align-self: flex-start;
             cursor: pointer;
+          }
+          .radioLabel input[type="radio"] {
+            position: absolute;
+            visibility: hidden;
+          }
+          .radioCheck {
+            position: absolute;
+            height: 25px;
+            width: 25px;
+            margin-top: -5px;
+            left: -100%;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ccc;
+          }
+          .radioLabel:hover .radioCheck {
+            border: 2px solid lightgreen;
+          }
+          input[type=radio]:checked ~ .radioCheck, .radioCheck:hover {
+            border: 2px solid lightgreen;
+          }
+          .checkSelect {
+            display: block;
+            border-radius: 50%;
+          }
+          input[type=radio]:checked ~ .radioCheck .checkSelect {
+            background-color: lightgreen;
+            height: 18px;
+            width: 18px;
           }
         `}
       <form onSubmit={ this.handleSubmit } className="container" >
@@ -119,6 +164,7 @@ class EntryForm extends Component {
               ref="goodRadio"
               name="mealValue"
               onChange={ this.handleValueChange } />
+              <span className="radioCheck"><span className="checkSelect"></span></span>
               Good
           </label>
           <label htmlFor="okay" className="radioLabel">
@@ -129,6 +175,7 @@ class EntryForm extends Component {
               ref="okayRadio"
               name="mealValue"
               onChange={ this.handleValueChange } />
+              <span className="radioCheck"><span className="checkSelect"></span></span>
               Okay
           </label>
           <label htmlFor="bad" className="radioLabel">
@@ -139,6 +186,7 @@ class EntryForm extends Component {
               ref="badRadio"
               name="mealValue" 
               onChange={ this.handleValueChange }/>
+              <span className="radioCheck"><span className="checkSelect"></span></span>
               Bad
           </label>
         </div>

@@ -1,6 +1,8 @@
 import React from 'react';
 import PastEntry from './PastEntry';
 
+import Style from 'style-it';
+
 const PastEntryList = ({ entries }) => {
     let pastEntryNodes = entries.map(entry => {
       return (
@@ -12,9 +14,19 @@ const PastEntryList = ({ entries }) => {
       )
     })
     return (
-        <ul>
-            { pastEntryNodes }
-        </ul>
+        <Style>
+            {`
+                .pastEntryList {
+                    margin: 0;
+                    padding: 0;
+                    list-style-type: none;
+                    border: 2px solid #fff;
+                }
+            `}
+            <ul className="pastEntryList">
+                { pastEntryNodes }
+            </ul>
+        </Style>
     )
 }
 

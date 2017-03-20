@@ -22,8 +22,7 @@ class EntryList extends Component {
       <Style>
         {`
           .container {
-            border: 1px solid #ccc;
-            margin-bottom: 1em;
+            border: 2px solid #fff;
             border-radius: .5em;
             box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
             background-color: #ffffff;
