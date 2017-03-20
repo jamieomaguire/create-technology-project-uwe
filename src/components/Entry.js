@@ -88,19 +88,26 @@ export default class Entry extends Component {
       <Style>
         {`
           .entryContainer {
+            position: relative;
             padding: 1em;
-            border-bottom: 1px solid #ccc;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             padding-top: .5em;
             padding-bottom: .5em;
+            background-color: ${color};
+            color: white;
+          }
+          .entryContainer:first-of-type {
+            border-top-left-radius: .5em;
+            border-top-right-radius: .5em;
           }
           .entryContainer:last-of-type {
             border: none;
             padding-bottom: 0;
           }
           .entryOptions {
+            z-index: 1;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -110,7 +117,6 @@ export default class Entry extends Component {
             margin: 0;
             font-size: .9em;
             font-family: sans-serif;
-            color: #888;
           }
           .entryUpdate {
             margin-left: auto;
@@ -119,14 +125,13 @@ export default class Entry extends Component {
           .entryDelete,
           .entryUpdate {
             cursor: pointer;
-            height: 1.8em;
-            width: 1.8em;
-            color: #888;
+            height: 1.5em;
+            width: 1.5em;
             transition: 300ms ease-out;
           }
           .entryDelete:hover,
           .entryUpdate:hover {
-            color: #333;
+            transform: scale(1.2);
           }
           .entryValue {
             display: flex;
@@ -162,9 +167,24 @@ export default class Entry extends Component {
           .updateMeal {
             padding: .5em;
             border: 0;
-            border-bottom: 1px solid #ccc;
+            border-bottom: 1px solid #fff;
             display: block;
             margin-bottom: .5em;
+            border-radius: 0;
+            background: none;
+            color: white;
+          }
+          ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: white;
+          }
+          ::-moz-placeholder { /* Firefox 19+ */
+            color: white;
+          }
+          :-ms-input-placeholder { /* IE 10+ */
+            color: white;
+          }
+          :-moz-placeholder { /* Firefox 18- */
+            color: white;
           }
           .updateSubmit {
             background-color: #1DA1CD;
@@ -172,6 +192,7 @@ export default class Entry extends Component {
             border: none;
             padding: .5em 1em;
             text-transform: uppercase;
+            margin-bottom: 1em;
           }
           .updateValueGroup {
             margin-bottom: .5em;
@@ -188,10 +209,7 @@ export default class Entry extends Component {
           </div>
           <div className="entryContent">
             <p className="entryMeal">{this.props.meal}</p>
-            <div className="entryValue">
-              <span className="entryValueColour"></span>
-              <span>{ this.formatValue(this.props.value) }</span>
-            </div>
+
           </div>
           { (this.state.toBeUpdated) 
             ? (<form onSubmit={ this.handleEntryUpdate } className="updateForm">
@@ -239,10 +257,7 @@ export default class Entry extends Component {
                       onChange={ this.handleValueChange }/>
                   </label>
                 </div>
-                <input 
-                  type='submit'
-                  className="updateSubmit"
-                  value='Update' />
+                <button className="updateSubmit">Submit</button>
               </form>)
               : null}
         </div>

@@ -20,7 +20,8 @@ html {
 }
 
 body {
-  background-color: #E1E1E1;
+  background-color: #EEEEEE;
+  margin: 0;
 }
 /*body:after {
   content: '';

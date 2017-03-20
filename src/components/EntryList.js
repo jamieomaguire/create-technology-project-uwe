@@ -23,9 +23,9 @@ class EntryList extends Component {
         {`
           .container {
             border: 1px solid #ccc;
-            margin-bottom: 1.5em;
-            border-radius: .2em;
-            box-shadow: 0px 3px 8px rgba(0,0,0,.2);
+            margin-bottom: 1em;
+            border-radius: .5em;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
             background-color: #ffffff;
             display: flex;
             flex-direction: column;

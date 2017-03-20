@@ -31,7 +31,7 @@ class Overview extends Component {
             padding: 1em;
             margin-bottom: 1.5em;
             border-radius: .5em;
-            box-shadow: 0px 3px 8px rgba(0,0,0,.2);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
             background-color: #ffffff;
           }
         `}

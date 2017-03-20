@@ -154,10 +154,8 @@ class DailyChart extends Component {
       majorityValue = 'good';
     } else if (totalOkay > totalGood && totalOkay > totalBad) {
       majorityValue = 'okay';
-      console.log(totalGood, totalOkay, totalBad)
     } else if (totalBad > totalGood && totalBad > totalOkay) {
       majorityValue = 'bad';
-      console.log(totalGood, totalOkay, totalBad)
     } else {
       majorityValue = 'okay';
     }
@@ -182,17 +180,14 @@ class DailyChart extends Component {
       <Style>
         {`
           .chartContainer {
-            margin-bottom: 1.5em;
+            margin-bottom: 1em;
             border-radius: .5em;
-            box-shadow: 0px 3px 8px rgba(0,0,0,.2);
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
           }
           .box {
             border-top-right-radius: .5em;
             border-top-left-radius: .5em;
-            background-color: rgba(0,116,217,.6);
+            background-color: rgba(0,116,217,.7);
             border: 2px solid #f1f1f1;
             border-bottom: none;
             padding: 1em;
@@ -213,6 +208,7 @@ class DailyChart extends Component {
           }
           .chartHeading {
             margin: 0;
+            font-size: 1em;
           }
           .chartHeading span {
             display: block;
@@ -236,7 +232,7 @@ class DailyChart extends Component {
           </div>
           <div className="chartInfo">
             <div className="infoBox divider">            
-              <h3 className="chartHeading">Times eaten today: <span>{ this.calculateNumOfEntries(this.props.data) }</span></h3>
+              <h3 className="chartHeading">Meals: <span>{ this.calculateNumOfEntries(this.props.data) }</span></h3>
             </div>
             <div className="infoBox">
               <h3 className="chartHeading">Mostly: <span>{ this.formatValue(this.calculateTotalValue(this.props.data)) }</span></h3>

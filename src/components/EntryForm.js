@@ -62,9 +62,9 @@ class EntryForm extends Component {
           .container {
             border: 1px solid #ccc;
             padding: 1em;
-            margin-bottom: 1.5em;
+            margin-bottom: 1em;
             border-radius: .5em;
-            box-shadow: 0px 3px 8px rgba(0,0,0,.2);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
             background-color: #ffffff;
             display: flex;
             flex-direction: column;
@@ -111,7 +111,7 @@ class EntryForm extends Component {
           ref="mealInput"
           onChange={ this.handleMealChange } /> 
         <div>
-          <label htmlFor="good" className="radioLabel"> Good
+          <label htmlFor="good" className="radioLabel">
             <input
               type="radio"
               id="good"
@@ -119,8 +119,9 @@ class EntryForm extends Component {
               ref="goodRadio"
               name="mealValue"
               onChange={ this.handleValueChange } />
+              Good
           </label>
-          <label htmlFor="okay" className="radioLabel"> Okay
+          <label htmlFor="okay" className="radioLabel">
             <input
               type="radio"
               id="okay"
@@ -128,8 +129,9 @@ class EntryForm extends Component {
               ref="okayRadio"
               name="mealValue"
               onChange={ this.handleValueChange } />
+              Okay
           </label>
-          <label htmlFor="bad" className="radioLabel"> Bad
+          <label htmlFor="bad" className="radioLabel">
             <input
               type="radio"
               id="bad"
@@ -137,12 +139,10 @@ class EntryForm extends Component {
               ref="badRadio"
               name="mealValue" 
               onChange={ this.handleValueChange }/>
+              Bad
           </label>
         </div>
-        <input
-          type='submit'
-          className="formSubmit"
-          value='Add' />
+        <button className="formSubmit">Add</button>
       </form>
       </Style>
     )
