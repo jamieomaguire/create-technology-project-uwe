@@ -136,8 +136,9 @@ class EntryForm extends Component {
           }
           input[type=radio]:checked ~ .radioCheck .checkSelect {
             background-color: lightgreen;
-            height: 18px;
-            width: 18px;
+            border: 2px solid #fff;
+            height: 20px;
+            width: 20px;
           }
         `}
       <form onSubmit={ this.handleSubmit } className="container" >

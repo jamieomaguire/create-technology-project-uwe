@@ -17,7 +17,6 @@ const port = 3001;
 // Database configuration
 mongoose.connect('mongodb://<DBUSERNAME>:<DBPASSWORD>@ds025439.mlab.com:25439/nom-noms');
 
-
 // Configure the API to use bodyParser and look for JSON data in the request body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

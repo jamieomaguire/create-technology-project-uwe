@@ -207,6 +207,9 @@ export default class Entry extends Component {
             cursor: pointer;
             font-family: sans-serif;
           }
+          .updateRadioLabel:first-of-type {
+            margin-top: 1em;
+          }
           .updateRadioCheck {
             position: absolute;
             height: 15px;
@@ -230,6 +233,7 @@ export default class Entry extends Component {
           }
           input[type=radio]:checked ~ .updateRadioCheck .updateCheckSelect {
             background-color: #fff;
+            border: 1px solid ${color};
             height: 10px;
             width: 10px;
           }
