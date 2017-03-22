@@ -125,6 +125,7 @@ class EntryForm extends Component {
             align-items: center;
             justify-content: center;
             border: 2px solid #ccc;
+            transition: all 300ms ease-out;
           }
           .radioLabel:hover .radioCheck-good {
             border: 2px solid #68D286;
