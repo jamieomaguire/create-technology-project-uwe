@@ -112,7 +112,9 @@ class EntryForm extends Component {
             position: absolute;
             visibility: hidden;
           }
-          .radioCheck {
+          .radioCheck-good,
+          .radioCheck-okay,
+          .radioCheck-bad {
             position: absolute;
             height: 25px;
             width: 25px;
@@ -124,21 +126,48 @@ class EntryForm extends Component {
             justify-content: center;
             border: 2px solid #ccc;
           }
-          .radioLabel:hover .radioCheck {
-            border: 2px solid lightgreen;
+          .radioLabel:hover .radioCheck-good {
+            border: 2px solid #68D286;
           }
-          input[type=radio]:checked ~ .radioCheck, .radioCheck:hover {
-            border: 2px solid lightgreen;
+          .radioLabel:hover .radioCheck-okay {
+            border: 2px solid #FBAD2F;
           }
-          .checkSelect {
+          .radioLabel:hover .radioCheck-bad {
+            border: 2px solid #EB585C;
+          }
+
+          input[type=radio]:checked ~ .radioCheck-good, .radioCheck-good:hover {
+            border: 2px solid #68D286;
+          }
+          input[type=radio]:checked ~ .radioCheck-okay, .radioCheck-okay:hover {
+            border: 2px solid #FBAD2F;
+          }
+          input[type=radio]:checked ~ .radioCheck-bad, .radioCheck-bad:hover {
+            border: 2px solid #EB585C;
+          }
+          .checkSelect-good,
+          .checkSelect-okay,
+          .checkSelect-bad {
             display: block;
             border-radius: 50%;
           }
-          input[type=radio]:checked ~ .radioCheck .checkSelect {
-            background-color: lightgreen;
-            border: 2px solid #fff;
+          input[type=radio]:checked ~ .radioCheck-good .checkSelect-good,
+          input[type=radio]:checked ~ .radioCheck-okay .checkSelect-okay,
+          input[type=radio]:checked ~ .radioCheck-bad .checkSelect-bad {
             height: 20px;
             width: 20px;
+          }
+          input[type=radio]:checked ~ .radioCheck-good .checkSelect-good {
+            background-color: #68D286;
+            border: 2px solid #fff;
+          }
+          input[type=radio]:checked ~ .radioCheck-okay .checkSelect-okay {
+            background-color: #FBAD2F;
+            border: 2px solid #fff;
+          }
+          input[type=radio]:checked ~ .radioCheck-bad .checkSelect-bad {
+            background-color: #EB585C;
+            border: 2px solid #fff;
           }
         `}
       <form onSubmit={ this.handleSubmit } className="container" >
@@ -165,7 +194,7 @@ class EntryForm extends Component {
               ref="goodRadio"
               name="mealValue"
               onChange={ this.handleValueChange } />
-              <span className="radioCheck"><span className="checkSelect"></span></span>
+              <span className="radioCheck-good"><span className="checkSelect-good"></span></span>
               Good
           </label>
           <label htmlFor="okay" className="radioLabel">
@@ -176,7 +205,7 @@ class EntryForm extends Component {
               ref="okayRadio"
               name="mealValue"
               onChange={ this.handleValueChange } />
-              <span className="radioCheck"><span className="checkSelect"></span></span>
+              <span className="radioCheck-okay"><span className="checkSelect-okay"></span></span>
               Okay
           </label>
           <label htmlFor="bad" className="radioLabel">
@@ -187,7 +216,7 @@ class EntryForm extends Component {
               ref="badRadio"
               name="mealValue" 
               onChange={ this.handleValueChange }/>
-              <span className="radioCheck"><span className="checkSelect"></span></span>
+              <span className="radioCheck-bad"><span className="checkSelect-bad"></span></span>
               Bad
           </label>
         </div>
