@@ -110,14 +110,17 @@ class EntryBox extends Component {
       .catch(err => {
         console.error(err);
       });   
+    let entries = this.state.data;
 
-      // axios.delete(`${this.props.url}/${el._id}`)
-      // .then(res => {
-      //   console.log('Entry deleted!');
-      // })
-      // .catch(err => {
-      //   console.error(err);
-      // });
+    entries.map((el) => {
+    axios.delete(`${this.props.url}/${el._id}`)
+      .then(res => {
+        console.log('Entry deleted!');
+      })
+      .catch(err => {
+        console.error(err);
+      });
+    })
   }
 
   /** 

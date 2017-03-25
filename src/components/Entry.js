@@ -74,6 +74,11 @@ export default class Entry extends Component {
       let newValue = val.substr(0,1).toUpperCase().concat(val.substr(1));
       return newValue;
   }
+  checkRadio = (e) => {
+    if (e.which === 32 || e.which === 13) {
+      e.target.children[0].checked = true;
+    }
+  }
   render() {
     let color = '';
 
@@ -246,7 +251,6 @@ export default class Entry extends Component {
           </div>
           <div className="entryContent">
             <p className="entryMeal">{this.props.meal}</p>
-
           </div>
           { (this.state.toBeUpdated) 
             ? (<form onSubmit={ this.handleEntryUpdate } className="updateForm">
@@ -263,7 +267,7 @@ export default class Entry extends Component {
                   className="updateMeal"
                   onChange={ this.handleMealChange }/>
                 <div className="updateValueGroup">
-                  <label htmlFor="updateGood" className="updateRadioLabel">
+                  <label htmlFor="updateGood" className="updateRadioLabel" onKeyPress={this.checkRadio} tabIndex="0">
                     <input
                       type="radio"
                       id="updateGood"
@@ -275,7 +279,7 @@ export default class Entry extends Component {
                       <span className="updateRadioCheck"><span className="updateCheckSelect"></span></span>
                       Good
                   </label>
-                  <label htmlFor="updateOkay" className="updateRadioLabel">
+                  <label htmlFor="updateOkay" className="updateRadioLabel" onKeyPress={this.checkRadio} tabIndex="0">
                     <input
                       type="radio"
                       id="updateOkay"
@@ -287,7 +291,7 @@ export default class Entry extends Component {
                       <span className="updateRadioCheck"><span className="updateCheckSelect"></span></span>
                       Okay
                   </label>
-                  <label htmlFor="updateBad" className="updateRadioLabel">
+                  <label htmlFor="updateBad" className="updateRadioLabel" onKeyPress={this.checkRadio} tabIndex="0">
                     <input
                       type="radio"
                       id="updateBad"
@@ -300,7 +304,7 @@ export default class Entry extends Component {
                       Bad
                   </label>
                 </div>
-                <button className="updateSubmit">Submit</button>
+                <button type="submit" className="updateSubmit">Submit</button>
               </form>)
               : null}
         </div>

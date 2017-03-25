@@ -47,6 +47,7 @@ class EntryList extends Component {
         <div className="container">
           { entryNodes }
           <button 
+            type="submit" 
             className="completeDay"
             onClick={ this.props.onCompleteDay }>Complete Day</button>
         </div>

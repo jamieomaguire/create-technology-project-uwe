@@ -55,6 +55,11 @@ class EntryForm extends Component {
     okayRadio.checked = false;
     badRadio.checked = false;
   }
+  checkRadio = (e) => {
+    if (e.which === 32 || e.which === 13) {
+      e.target.children[0].checked = true;
+    }
+  }
   render() {
     return (
       <Style>
@@ -178,16 +183,18 @@ class EntryForm extends Component {
           placeholder='When did you eat?'
           value={ this.state.time }
           ref="timeInput"
-          onChange={ this.handleTimeChange } />
+          onChange={ this.handleTimeChange }
+          required />
         <input
           className="textInput"
           type='text'
           placeholder='What did you have?'
           value={ this.state.text }
           ref="mealInput"
-          onChange={ this.handleMealChange } /> 
+          onChange={ this.handleMealChange }
+          required /> 
         <div>
-          <label htmlFor="good" className="radioLabel">
+          <label htmlFor="good" className="radioLabel" onKeyPress={this.checkRadio} tabIndex="0">
             <input
               type="radio"
               id="good"
@@ -198,7 +205,7 @@ class EntryForm extends Component {
               <span className="radioCheck-good"><span className="checkSelect-good"></span></span>
               Good
           </label>
-          <label htmlFor="okay" className="radioLabel">
+          <label htmlFor="okay" className="radioLabel" onKeyPress={this.checkRadio} tabIndex="0">
             <input
               type="radio"
               id="okay"
@@ -209,19 +216,19 @@ class EntryForm extends Component {
               <span className="radioCheck-okay"><span className="checkSelect-okay"></span></span>
               Okay
           </label>
-          <label htmlFor="bad" className="radioLabel">
+          <label htmlFor="bad" className="radioLabel" onKeyPress={this.checkRadio} tabIndex="0">
             <input
               type="radio"
               id="bad"
               value="bad"
               ref="badRadio"
               name="mealValue" 
-              onChange={ this.handleValueChange }/>
+              onChange={ this.handleValueChange } />
               <span className="radioCheck-bad"><span className="checkSelect-bad"></span></span>
               Bad
           </label>
         </div>
-        <button className="formSubmit">Add</button>
+        <button type="submit" className="formSubmit">Add</button>
       </form>
       </Style>
     )
