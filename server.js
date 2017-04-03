@@ -15,7 +15,7 @@ const router = express.Router();
 const port = 3001;
 
 // Database configuration
-mongoose.connect('mongodb://<DBUSERNAME>:<DBPASSWORD>@ds025439.mlab.com:25439/nom-noms');
+mongoose.connect('mongodb://uniAccess:0qww294e@ds025439.mlab.com:25439/nom-noms');
 
 // Configure the API to use bodyParser and look for JSON data in the request body
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -119,39 +119,6 @@ router.route('/past-entries')
       res.json({ message: 'Entry succesfully added!' });
     });
   });
-
-// // Adding a route to a specific entry based in the database ID 
-// router.route('/past-entries/:entry_id')
-//   // the put method allows us to update our entry based on the ID passed to the route
-//   .put(function(req, res) {
-//     PastEntry.findById(req.params.entry_id, function(err, entry) {
-//       if (err)
-//         res.send(err);
-//       // setting the new date and value to whatever was changed. if nothing changed, don't alter the field
-//       (req.body.date) ? entry.date = req.body.date : null;
-//       (req.body.value) ? entry.value = req.body.value : null;
-//       // save entry
-//       entry.save(function(err) {
-//         if (err)
-//           res.send(err);
-//         res.json({ message: 'Entry has been updated' });
-//       });
-//     });
-//   })
-//   .delete(function(req, res) {
-//     // selects the entry by its ID, then removes it 
-//     PastEntry.remove({ _id: req.params.entry_id }, function(err, entry) {
-//       if (err)
-//         res.send(err);
-//       res.json({ message: 'Entry has been deleted!' })
-//     })
-//   });
-
-
-/////
-// END TEST FOR PAST ENTRIES
-/////
-
 
 // Use router configuration when the API is called
 app.use('/api', router);

@@ -123,10 +123,12 @@ class DailyChart extends Component {
       }
     })
   }
+  // work out the total number of entries
   calculateNumOfEntries(entryData) {
     let totalEntries = entryData.length;
     return totalEntries;
   }
+  // work out the highest value of the entries
   calculateTotalValue(entries) {
     let todaysEntries = entries;
     let totalGood = 0;
@@ -161,6 +163,7 @@ class DailyChart extends Component {
     }
     return majorityValue;
   }
+  // capitalise the first letter of the value
   formatValue = (val) => {
     let newValue = val.substr(0,1).toUpperCase().concat(val.substr(1));
     return newValue;
@@ -175,6 +178,7 @@ class DailyChart extends Component {
     this.loadInterval = false;
   }
   render() {
+    // remove the chartjs legend
     defaults.global.legend.display = false;
     return (
       <Style>
@@ -184,7 +188,7 @@ class DailyChart extends Component {
             border-radius: .5em;
             box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
           }
-          .box {
+          .chartBox {
             border-top-right-radius: .5em;
             border-top-left-radius: .5em;
             background-color: rgba(0,116,217,.7);
@@ -227,7 +231,7 @@ class DailyChart extends Component {
           }
         `}
         <div className="chartContainer">
-          <div className="box">
+          <div className="chartBox">
           <Doughnut data={ this.state.chartData } />
           </div>
           <div className="chartInfo">
