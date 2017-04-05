@@ -1,4 +1,6 @@
-// comment box
+// This is the main container for the entries section of the application
+// It contains the chart, form and list of entries
+
 import React, { Component } from 'react';
 import axios from 'axios';
 import EntryList from './EntryList';
@@ -25,27 +27,27 @@ class EntryBox extends Component {
     this.handlePastEntrySubmit = this.handlePastEntrySubmit.bind(this);
     this.calculateTotalValue = this.calculateTotalValue.bind(this);
   }
+  // axios is used to make ajax calls to get the data
+  // this is then loaded into the state and passed down to the child components as props
   loadEntriesFromServer() {
     axios.get(this.props.url)
       .then(res => {
         this.setState({ data: res.data });
       })
   }
+  // This updates the state to contain new entries
   handleEntrySubmit(entry) {
     let entries = this.state.data;
     entry.id = Date.now();
     let newEntries = entries.concat([entry]);
     this.setState({ data: newEntries });
-        console.log(entry);
     axios.post(this.props.url, entry)
       .catch(err => {
-        console.error(err);
         this.setState({ data: entries });
       });
   }
-
+  // Delete entries
   handleEntryDelete(id) {
-    console.log('deleting...')
     axios.delete(`${this.props.url}/${id}`)
       .then(res => {
         console.log('Entry deleted!');
@@ -54,9 +56,8 @@ class EntryBox extends Component {
         console.error(err);
       });
   }
-
+  // Update entries
   handleEntryUpdate(id, entry) {
-    console.log('updating...')
     // sends the entry id and new time/meal to the api
     axios.put(`${this.props.url}/${id}`, entry)
       .catch(err => {
@@ -64,6 +65,8 @@ class EntryBox extends Component {
       });
     console.log(this.state.data)
   }
+  // This is part of the set of functions used to update the past entries data
+  // It works out the average value for the day and passes that value on to whereever it is needed
   calculateTotalValue(entries) {
     let todaysEntries = entries;
     let totalGood = 0;
@@ -99,6 +102,10 @@ class EntryBox extends Component {
 
     return majorityValue;
   }
+  // This is called when complete day is clicked
+  // It will work out the average value for the day using the calculateTotalValue function
+  // and then post that to the database using axios
+  // it will then wipe the data for the current day as to reset the state using axios.delete
   handlePastEntrySubmit() {
     let pastEntryValue = this.calculateTotalValue(this.state.data);
     let pastEntryDate = Date().toString();

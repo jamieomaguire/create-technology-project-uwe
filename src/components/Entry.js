@@ -1,4 +1,7 @@
-// comment
+// This is the individual entry component
+// Many of these will be rendered to a list when the entries are mapped through
+// in the EntryList component
+
 import React, { Component } from 'react';
 import TiEdit from 'react-icons/lib/ti/edit';
 import TiDelete from 'react-icons/lib/ti/delete';
@@ -54,7 +57,6 @@ export default class Entry extends Component {
     e.preventDefault();
     let id = this.props.uniqueID;
     this.props.onEntryDelete(id);
-    console.log('oops deleted');
   }
   handleMealChange(e) {
     this.setState({ meal: e.target.value });
@@ -80,8 +82,11 @@ export default class Entry extends Component {
     }
   }
   render() {
+    // choose a colour to use as the background depending on the meal value
+    // good = green
+    // okay = yellow
+    // bad = red
     let color = '';
-
     if (this.props.value === 'good') {
       color = '#68D286';
     } else if (this.props.value === 'okay') {
@@ -89,6 +94,7 @@ export default class Entry extends Component {
     } else if (this.props.value === 'bad') {
       color = '#EB585C';
     }
+    // the colour variable is used below in the background-color 
     return (
       <Style>
         {`
@@ -161,11 +167,6 @@ export default class Entry extends Component {
             align-items: center;
             justify-content: space-between;
             margin-bottom: .5em;
-          }
-          .entryMeal {
-          }
-          .updateForm {
-
           }
           .updateTime,
           .updateMeal {
@@ -244,14 +245,20 @@ export default class Entry extends Component {
           }
         `}
         <div className="entryContainer">
+
           <div className="entryOptions">
             <h3 className="entryTime">{this.props.time}</h3>
+            {/* The update and delete icons */}
             <TiEdit className="entryUpdate" href="#" onClick={ this.updateEntry } />
             <TiDelete className="entryDelete" href="#" onClick={ this.deleteEntry }/>
           </div>
+
+          {/* The entry meal */}
           <div className="entryContent">
             <p className="entryMeal">{this.props.meal}</p>
           </div>
+
+          {/* This is the update form. It is only rendered if the toBeUpdated boolean in state is set to true */}
           { (this.state.toBeUpdated) 
             ? (<form onSubmit={ this.handleEntryUpdate } className="updateForm">
                 <input

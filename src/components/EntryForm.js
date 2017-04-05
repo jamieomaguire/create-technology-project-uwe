@@ -1,4 +1,5 @@
-// comment form
+// The EntryForm component allows people to submit their meals for the day
+
 import React, { Component } from 'react';
 
 import Style from 'style-it';
@@ -19,12 +20,15 @@ class EntryForm extends Component {
     this.handleValueChange = this.handleValueChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  // update the time
   handleTimeChange(e) {
     this.setState({ time: e.target.value });
   }
+  // update the meal
   handleMealChange(e) {
     this.setState({ meal: e.target.value });
   }
+  // update the value
   handleValueChange(e) {
     let arr = [...document.getElementsByName('mealValue')];
     for (let i = 0; i < arr.length; i++) {
@@ -33,6 +37,7 @@ class EntryForm extends Component {
       }
     }
   }
+  // submit the form data
   handleSubmit(e) {
     e.preventDefault();
     let time = this.state.time.trim();
@@ -55,6 +60,7 @@ class EntryForm extends Component {
     okayRadio.checked = false;
     badRadio.checked = false;
   }
+  // for some extra accessibility - this checks/unchecks the custom radio buttons if the space bar or enter key are pressed
   checkRadio = (e) => {
     if (e.which === 32 || e.which === 13) {
       e.target.children[0].checked = true;

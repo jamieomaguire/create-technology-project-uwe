@@ -1,7 +1,10 @@
+// Past Entry is similar to the Entry component except there is no form involed
+
 import React from 'react';
 import Style from 'style-it';
 
 const PastEntry = ({ date, uniqueID, value }) => {
+    // format the date to be more readable to people
     const formatDate = (entryDate) => {
         let date = entryDate;
         let dateArr = date.split(' ');
@@ -13,7 +16,9 @@ const PastEntry = ({ date, uniqueID, value }) => {
       let newValue = val.substr(0,1).toUpperCase().concat(val.substr(1));
       return newValue;
     }
-     let color = '';
+
+    // As with the Entry component, set the background color to represent the value
+    let color = '';
 
     if (value === 'good') {
     color = '#68D286';

@@ -1,3 +1,6 @@
+// This is the root component which is rendered into the root div on the index.html page.
+// It is a React Router component which sets up the navigation paths
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, hashHistory } from 'react-router'

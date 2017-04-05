@@ -1,4 +1,5 @@
-//commentlist
+// This is the EntryList component which will render out multiple Entry components
+
 import React, { Component } from 'react';
 import Entry from './Entry';
 
@@ -6,6 +7,7 @@ import Style from 'style-it';
 
 class EntryList extends Component {
   render() {
+    // map through all the entries and return an entry item for each one
     let entryNodes = this.props.data.map(entry => {
       return (
         <Entry 
@@ -46,6 +48,7 @@ class EntryList extends Component {
         `}
         <div className="container">
           { entryNodes }
+          {/* This is the complete day button */}
           <button 
             type="submit" 
             className="completeDay"

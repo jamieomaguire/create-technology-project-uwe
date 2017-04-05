@@ -1,3 +1,5 @@
+// This is a simple 404 message in case someone navigates to the wrong location in the application
+
 import React from 'react';
 
 const Error404 = () => (

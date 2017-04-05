@@ -1,3 +1,5 @@
+// The Settings component is currently just a proof of concept. It does not have any functionality.
+// If the project were to be extended, it would allow people to customise their application's colour scheme based on their visual needs such as colour blindness.
 import React from 'react';
 import FaSignOut from 'react-icons/lib/fa/sign-out';
 import FaLock from 'react-icons/lib/fa/lock';

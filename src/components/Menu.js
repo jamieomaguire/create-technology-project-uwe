@@ -1,8 +1,11 @@
+// The Menu component is the navigation for the application
+// It uses the Link component from React Router to provide links to different endpoints
 import React from 'react';
 import { Link } from 'react-router';
 
 import Style from 'style-it';
 
+// Some SVG icons
 import FaPieChart from 'react-icons/lib/fa/pie-chart'
 import FaAreaChart from 'react-icons/lib/fa/area-chart'
 import MdSettings from 'react-icons/lib/md/settings'
@@ -58,18 +61,21 @@ const Menu = () => (
         <nav className="nav-container">
             <ul className="nav-list">
                 <li className="nav-listItem">
+                    {/* Takes people to the '/' path*/}
                     <Link to='/' activeClassName="nav-selected" className="nav-link">
                         <FaPieChart />
                         <h3 className="nav-heading">Today</h3>
                     </Link>
                 </li>
                 <li className="nav-listItem">
+                    {/* Takes people to the '/overview' path*/}
                     <Link to='/overview' activeClassName="nav-selected" className="nav-link">
                         <FaAreaChart />
                         <h3 className="nav-heading">Overview</h3>
                     </Link>
                 </li>
                 <li className="nav-listItem">
+                    {/* Takes people to the '/settings' path*/}
                     <Link to='/settings' activeClassName="nav-selected" className="nav-link">
                         <MdSettings />
                         <h3 className="nav-heading">Settings</h3>

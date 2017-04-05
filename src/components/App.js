@@ -1,4 +1,5 @@
-// indexjs
+// Root Component
+// Import all the other components to be rendered into this parent component
 import React, { Component } from 'react';
 import Menu from './Menu';
 import EntryBox from './EntryBox';
@@ -14,6 +15,7 @@ class App extends Component {
   }
   render() {
     return (
+      // style-it allows for inline styles with the full expressive power of CSS
       <Style>
         {`
           .app {
@@ -27,6 +29,7 @@ class App extends Component {
           }
         `}
         <div className="app">
+          {/* Here react router is rendering different components based on the pathname in the browser */}
           <Menu />
           <div className="app-inner">
             {(this.props.location.pathname === "/") ?

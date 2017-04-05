@@ -1,3 +1,5 @@
+// This component contains the doughnut chart and logic for calculating the meal values
+
 import React, { Component } from 'react';
 import { Doughnut, defaults } from 'react-chartjs-2';
 
@@ -10,6 +12,7 @@ class DailyChart extends Component {
       good: 0,
       okay: 0,
       bad: 0,
+      // This is all the data needed for the chart. The array called 'data' will have its values updated
       chartData: {
         labels: ['Good', 'Okay', 'Bad'],
         datasets: [
@@ -85,7 +88,6 @@ class DailyChart extends Component {
   }
   // retreive the values, calculate the occurences and then update the chart with those values
   updateChart(entryData) {
-    // console.log('updating')
     this.retrieveMealValues(this.props.data);
     this.setState({
       chartData: {
@@ -178,7 +180,7 @@ class DailyChart extends Component {
     this.loadInterval = false;
   }
   render() {
-    // remove the chartjs legend
+    // remove the default chartjs legend
     defaults.global.legend.display = false;
     return (
       <Style>
@@ -231,13 +233,16 @@ class DailyChart extends Component {
           }
         `}
         <div className="chartContainer">
+          {/* The chart */}
           <div className="chartBox">
           <Doughnut data={ this.state.chartData } />
           </div>
+          {/* The number of meals */}
           <div className="chartInfo">
             <div className="infoBox divider">            
               <h3 className="chartHeading">Meals: <span>{ this.calculateNumOfEntries(this.props.data) }</span></h3>
             </div>
+            {/* The average value */}
             <div className="infoBox">
               <h3 className="chartHeading">Mostly: <span>{ this.formatValue(this.calculateTotalValue(this.props.data)) }</span></h3>
             </div>

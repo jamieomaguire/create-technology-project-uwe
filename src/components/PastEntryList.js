@@ -1,3 +1,5 @@
+// Past Entry list is similar to the EntryList component
+// it maps through a loaded list of past values and returns a past entry component for each item
 import React from 'react';
 import PastEntry from './PastEntry';
 

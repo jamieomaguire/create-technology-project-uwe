@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+// Overview displays a list of past entries. It is similar to the EntryList component except people can't update/delete past entries
 import PastEntryList from './PastEntryList';
 import Style from 'style-it';
 
@@ -12,13 +13,14 @@ class Overview extends Component {
     };
     this.loadPastEntriesFromServer = this.loadPastEntriesFromServer.bind(this);
   }
+  // load the past entries from the api into state
   loadPastEntriesFromServer() {
     axios.get(this.props.url)
       .then(res => {
         this.setState({ data: res.data });
       })
-    console.log('loaded past entries');
   }
+  // load the data once the component has been mounted
   componentDidMount() {
     this.loadPastEntriesFromServer();
   }

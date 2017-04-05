@@ -15,7 +15,7 @@ const router = express.Router();
 const port = 3001;
 
 // Database configuration
-mongoose.connect('mongodb://uniAccess:0qww294e@ds025439.mlab.com:25439/nom-noms');
+mongoose.connect('mongodb://<DBUSERNAME>:<DBPASSWORD>@ds025439.mlab.com:25439/nom-noms');
 
 // Configure the API to use bodyParser and look for JSON data in the request body
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -93,7 +93,6 @@ router.route('/entries/:entry_id')
     })
   });
 
-// TEST API STUFF FOR PAST ENTRIES 
 // adding the /past-entries route to the /api router
 router.route('/past-entries')
   // retrieve all entries from the database 
